@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.nutfreedom.liveat500pxv2">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,7 +19,7 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="fc481e9ae448bce37f38888905999a02f92607f0" />
+        <meta-data android:name="com.example.nutfreedom.liveat500pxv2.configuration.GlideConfiguration"
+            android:value="GlideModule"/>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

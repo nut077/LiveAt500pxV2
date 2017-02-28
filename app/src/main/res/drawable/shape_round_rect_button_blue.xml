@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid android:color="@color/colorShapeRoundRectButtonBlue" />
+    <corners android:radius="@dimen/radius_rape_round_rect_button_blue" />
+    <padding
+        android:bottom="@dimen/padding_shape_round_rect_button_blue"
+        android:left="@dimen/padding_shape_round_rect_button_blue"
+        android:right="@dimen/padding_shape_round_rect_button_blue"
+        android:top="@dimen/padding_shape_round_rect_button_blue" />
+</shape>

@@ -2,4 +2,11 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="drawer_menu_width">240dp</dimen>
+    <dimen name="padding_text_item_photo_cvg">16dp</dimen>
+    <dimen name="head_text_item_photo_cvg">24sp</dimen>
+    <dimen name="descriptions_text_item_photo_cvg">18sp</dimen>
+    <dimen name="margin_top_btn_new_photo">4dp</dimen>
+    <dimen name="padding_shape_round_rect_button_blue">16dp</dimen>
+    <dimen name="radius_rape_round_rect_button_blue">12dp</dimen>
 </resources>
