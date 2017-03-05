@@ -122,7 +122,7 @@ public class PhotoListManager {
 
     private void loadCache() {
         SharedPreferences preferences = mContext.getSharedPreferences("photos", Context.MODE_PRIVATE);
-        String json = preferences.getString("photos", null);
+        String json = preferences.getString("json", null);
         if (json == null) {
             return;
         }
