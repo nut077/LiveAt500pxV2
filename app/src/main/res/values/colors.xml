@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#1976D2</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorBgTextItemPhotoCvg">#80000000</color>
+    <color name="overlay">#80000000</color>
     <color name="colorShapeRoundRectButtonBlue">#2196F3</color>
     <color name="colorShapeRoundRectButtonBlueSelected">#3F51B5</color>
     <color name="colorShapeRoundRectButtonBluePressed">#1976D2</color>
