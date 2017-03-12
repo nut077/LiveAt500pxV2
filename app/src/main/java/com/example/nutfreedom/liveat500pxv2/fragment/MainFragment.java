@@ -10,11 +10,13 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.example.nutfreedom.liveat500pxv2.R;
 import com.example.nutfreedom.liveat500pxv2.adapter.PhotoListAdapter;
 import com.example.nutfreedom.liveat500pxv2.dao.PhotoItemCollectionDao;
+import com.example.nutfreedom.liveat500pxv2.dao.PhotoItemDao;
 import com.example.nutfreedom.liveat500pxv2.databinding.FragmentMainBinding;
 import com.example.nutfreedom.liveat500pxv2.datatype.MutableInteger;
 import com.example.nutfreedom.liveat500pxv2.manager.Contextor;
@@ -29,6 +31,10 @@ import retrofit2.Response;
 
 
 public class MainFragment extends Fragment {
+
+    public interface FragmentListener {
+        void onPhotoItemClicked(PhotoItemDao dao);
+    }
 
     PhotoListAdapter listAdapter;
     FragmentMainBinding binding;
@@ -48,13 +54,6 @@ public class MainFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentMainBinding.inflate(inflater, container, false);
-        initInstances(savedInstanceState);
-        return binding.getRoot();
-    }
-
-    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         init(savedInstanceState);
@@ -62,6 +61,13 @@ public class MainFragment extends Fragment {
         if (savedInstanceState != null) {
             onRestoreInstanceState(savedInstanceState);
         }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = FragmentMainBinding.inflate(inflater, container, false);
+        initInstances(savedInstanceState);
+        return binding.getRoot();
     }
 
     private void init(Bundle savedInstanceState) {
@@ -76,6 +82,8 @@ public class MainFragment extends Fragment {
         listAdapter.setDao(photoListManager.getDao());
 
         binding.listView.setAdapter(listAdapter);
+
+        binding.listView.setOnItemClickListener(listViewItemClickListener);
         binding.swipeRefreshLayout.setOnRefreshListener(pullToRefreshListener);
         binding.listView.setOnScrollListener(listViewScrollListener);
 
@@ -200,6 +208,17 @@ public class MainFragment extends Fragment {
                 if (firstVisibleItem + visibleItemCount >= totalItemCount && photoListManager.getCount() > 0) {
                     loadMoreData();
                 }
+            }
+        }
+    };
+
+    AdapterView.OnItemClickListener listViewItemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            if (position < photoListManager.getCount()) {
+                PhotoItemDao dao = photoListManager.getDao().getData().get(position);
+                FragmentListener listener = (FragmentListener) getActivity();
+                listener.onPhotoItemClicked(dao);
             }
         }
     };
